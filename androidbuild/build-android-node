@@ -47,7 +47,7 @@ function myconf() {
 }
 
 if [ -z ${2+x} ]; then
-  myconf && make
+  myconf && ninja -C out/Release/ libnode
   cd $scriptdir/..
   x=$scriptdir/compiled/armeabi-v7a/
   mkdir -p $x

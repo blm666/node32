@@ -484,6 +484,9 @@
       'includes': [
         'node.gypi',
       ],
+      'ldflags': [
+       '-Wl,--gc-sections -Wl,--version-script=/home/ubuntu/mgcnode/node/androidbuild/vs.txt'
+      ],
 
       'include_dirs': [
         'src',

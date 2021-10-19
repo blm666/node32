@@ -221,7 +221,7 @@
             ],
           },],
           ['OS == "android"', {
-            'cflags': [ '-fPIC' ],
+            'cflags': [ '-fPIC -fdata-sections -ffunction-sections' ],
             'ldflags': [ '-fPIC' ]
           }],
         ],
