@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-if [ $# != 1 ]i
+if [ $# != 1 ];then
         echo "must give branch name!"
         exit 1
 fi
