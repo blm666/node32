@@ -1,4 +1,8 @@
 #!/usr/bin/env bash
+if [ $# != 1 ]i
+        echo "must give branch name!"
+        exit 1
+fi
 cd /home/ubuntu/mgcnode/node &&
 rm -rf out &&
 git checkout $1 &&
