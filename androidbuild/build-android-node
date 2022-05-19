@@ -27,6 +27,10 @@ function myconf() {
 myconf
 #下面的ninja命令只是用来编译出o文件，最终链接so的时候会失败（找不到lz之类的）,原因不明
 ninja -d keeprsp -C out/Release/ libnode || true
+find out/Release -name "*.a" -exec rm {} \; &&
+sed -i 's/rcsT/rcs/' out/Release/build.ninja
+ninja -d keeprsp -C out/Release/ libnode || true
 cd out/Release &&
 $AR rcs -o libnode.a  $(grep -oz 'obj\/\S*\.o\s' lib/libnode.so.rsp) 
+cd ../..
 #之后需要把所有的.a文件在mac下解压出所有的.o文件，然后用mac的ar重新压成一个a文件（可以把所有o文件都放到一起），然后放到mgc中进行编译即可
