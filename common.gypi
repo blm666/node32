@@ -221,9 +221,9 @@
             ],
           },],
           ['OS == "android"', {
-            'cflags': [ '-fPIC' ],
-            'ldflags': [ '-fPIC' ]
-          }],
+          'cflags': [ '-fPIC -fdata-sections -ffunction-sections -flto -Oz' ],
+            'ldflags': [ '-fPIC -O3 -flto' ]
+	}],
         ],
         'msvs_settings': {
           'VCCLCompilerTool': {
