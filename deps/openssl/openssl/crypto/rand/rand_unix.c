@@ -365,10 +365,10 @@ static ssize_t syscall_random(void *buf, size_t buflen)
      * - FreeBSD since 12.0 (1200061)
      */
 #  if defined(__GNUC__) && __GNUC__>=2 && defined(__ELF__) && !defined(__hpux)
-    extern int getentropy(void *buffer, size_t length) __attribute__((weak));
+   // extern int getentropy(void *buffer, size_t length) __attribute__((weak));
 
-    if (getentropy != NULL)
-        return getentropy(buf, buflen) == 0 ? (ssize_t)buflen : -1;
+   // if (getentropy != NULL)
+   //     return getentropy(buf, buflen) == 0 ? (ssize_t)buflen : -1;
 #  else
     union {
         void *p;
