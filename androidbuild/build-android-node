@@ -43,15 +43,21 @@ function myconf() {
       --without-intl \
       --openssl-no-asm \
       --without-bundled-v8 \
-      --shared
+      --shared \
+      --shared-zlib
 }
 
 if [ -z ${2+x} ]; then
-  myconf && make
+  myconf && ninja -d keeprsp -C out/Release/ libnode &&
+  find out/Release -name "*.a" -exec rm {} \; &&
+  sed -i 's/rcsT/rcs/' out/Release/build.ninja &&
+  ninja -d keeprsp -C out/Release/ libnode &&
+  cd out/Release &&
+  $AR rcs -o libnode.a  $(grep -oz 'obj\/\S*\.o\s' lib/libnode.so.rsp) &&
   cd $scriptdir/..
   x=$scriptdir/compiled/armeabi-v7a/
   mkdir -p $x
-  cp out/Release/lib/libnode.so $x/
+  find out/Release -name "*.a" -exec cp {} $x \;
 else
   eval $2
 fi
