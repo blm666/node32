@@ -34,7 +34,7 @@ then
 cd $scriptdir/..
 x=$scriptdir/compiled/arm64-v8a/
 mkdir -p $x
-find out/Release/ -type f -name "*.a" -exec cp {} $x/ \;
+cp deps/v8/out.gn/android-arm64/*.so $x/
 
 else
 
@@ -62,7 +62,7 @@ cd $scriptdir
 cd $scriptdir/..
 x=$scriptdir/compiled/arm64-v8a/
 mkdir -p $x
-cp out/Release/lib/libnode.so $x/
+find out/Release/ -type f -name "*.a" -exec cp {} $x/ \;
 
 fi
 
